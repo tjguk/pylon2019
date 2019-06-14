@@ -27,14 +27,23 @@ def on_key_down(key):
 
 def update():
     if keyboard.RIGHT :
-        alien.angle += 10
-        state["direction"] = (state["direction"] + radians(alien.angle))
-    elif keyboard.LEFT:
-        alien.angle -= 10
+        alien.angle += 2
         state["direction"] = (state["direction"] - radians(alien.angle))
+    elif keyboard.LEFT:
+        alien.angle -= 2
+        state["direction"] = (state["direction"] + radians(alien.angle))
 
     if state["moving"]:
         newX = sin(state["direction"])
         newY = cos(state["direction"])
-        alien.x += newX * 10
-        alien.y += newY * 10
+        alien.x -= newX * 10
+        alien.y -= newY * 10
+
+    if alien.left < 0:
+        alien.right = WIDTH
+    if alien.right > WIDTH:
+        alien.left = 0
+    if alien.top < 0:
+        alien.bottom = HEIGHT
+    if alien.bottom > HEIGHT:
+        alien.top = 0
