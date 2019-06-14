@@ -5,12 +5,13 @@ class OffenceStrategy:
     initial_free_zone_width = 250
     initial_free_zone_height = 250
 
-    def __init__(self, actor, width, height):
+    def __init__(self, actor, width, height, spaceship):
         self._actor = actor
         self._rand_range_min = 1
         self._rand_range_max = 3
         self._width = width
         self._height = height
+        self._spaceship = spaceship
 
         half_free_zone = OffenceStrategy.initial_free_zone_width / 2
         if self.get_sign() > 0.0:
@@ -59,3 +60,8 @@ class OffenceStrategy:
 
 
         return (step_x, step_y)
+
+    def detect_collision(self):
+        is_collision = self._spaceship.collidepoint((self._actor.x, self._actor.y))
+
+        return is_collision
