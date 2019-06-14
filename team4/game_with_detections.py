@@ -7,7 +7,7 @@ HEIGHT = 600
 WIDTH = 900
 
 
-number_0f_aliens = random.randint(1, 5)
+number_0f_aliens = random.randint(3, 5)
 offence_image = 'rock1'
 
 aliens = []
