@@ -26,7 +26,8 @@ spaceship.pos = (500,500)
 
 state = {
     "direction" : 0,
-    "moving" : 0
+    "moving" : 0,
+    "acceleration": 1
 }
 
 def draw():
@@ -48,15 +49,17 @@ def update():
     if keyboard.RIGHT :
         spaceship.angle += 2
         state["direction"] = (state["direction"] - radians(spaceship.angle))
+        state["acceleration"] = 10
     elif keyboard.LEFT:
         spaceship.angle -= 2
         state["direction"] = (state["direction"] + radians(spaceship.angle))
+        state["acceleration"] = 10
 
     if state["moving"]:
         newX = sin(state["direction"])
         newY = cos(state["direction"])
-        spaceship.x -= newX * 10
-        spaceship.y -= newY * 10
+        spaceship.x -= newX * state['acceleration']
+        spaceship.y -= newY * state['acceleration']
 
     if spaceship.left < 0:
         spaceship.right = WIDTH
