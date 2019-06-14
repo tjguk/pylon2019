@@ -38,3 +38,12 @@ def update():
         newY = cos(state["direction"])
         alien.x -= newX * 10
         alien.y -= newY * 10
+
+    if alien.left < 0:
+        alien.right = WIDTH
+    if alien.right > WIDTH:
+        alien.left = 0
+    if alien.top < 0:
+        alien.bottom = HEIGHT
+    if alien.bottom > HEIGHT:
+        alien.top = 0
